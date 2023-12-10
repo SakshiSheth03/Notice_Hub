@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>All Notices</title>
+	<script type="text/ecmascript" src="{% static 'user/js/scripts.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/style2.css'%}"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="header">
+		<h1>Notice Hub</h1>
+		<p>Always keeps you Updated!</p>
+	</div>
+
+	<div class="topnav">
+		<a class="active" href="#" onclick="home()" id="nav-home">Home</a>
+		<a onclick="about()" id="nav-about">About</a>
+		<a href="#contactus">Contact</a>
+		<div class="search-container">
+		  <!-- <form action="/action_page.php"> -->
+			<input type="text" placeholder="Search.." name="search" id="search" onkeyup="funsearch()">
+			<button type="submit"><i class="fa fa-search"></i></button>
+		  <!-- </form> -->
+		</div>
+	</div>
+
+	<div class="aboutus">
+		<h2>About Us</h2>
+		Notice Hub is a web application by which student can view all the notices of fees, activities or any other circulars and admin can post these notices.
+		<br>
+		Users can easily filter out the required notices using the searchbar provided on the right side of the navigation bar and reach out to the University for any queries regarding the circulars easily, through the contact information provided at the bottom of the page.
+	</div>
+
+	<div class="content">
+		<h2 id="top">All notices</h2>
+
+		{% for row in result %}
+		<div class="notice">
+			<h3 class="notice-title">{{row.title}}</h3>
+			<p class="date">Updated At : {{row.dateUpdated}}</p>
+			<p class="date">Created At : {{row.datePosted}}</p>
+			<p class="notice-subject">Subject: {{row.subject}}</p>
+			<p class="content">{{row.description|linebreaks}}</p>
+		</div>
+		{% endfor %}
+
+	</div>
+
+	<div class="search-nomatch">
+		No Match Found!
+	</div>
+
+	<div class="footer">
+		<div class="info">
+			<a href="https://goo.gl/maps/Y2FhUw6rtHE49PFk6" target="_blank" title="Address">
+				<ul>
+					<li>Ahmedabad Institute of Engineering and Technology</li>
+					<br>
+					<li><i class="fa fa-map-marker list-icon"></i>Near Vaishnavdevi Circle,</li>
+					<li>Off. S.G. Highway,</li>
+					<li>Ahmedabad-382210</li>
+				</ul>
+			</a>
+		</div>
+		<div class="contact-us" id="contactus">
+			<ul>
+				<li>Contact Us</li>
+				<br>
+				<li><i class="fa fa-phone list-icon"></i><a href="tel://1234567890" title="Phone">1234567890</a></li>
+				<li><i class="fa fa-envelope list-icon"></i><a href="mailto: http://info@aiet.edu.in" target="_blank" title="Mail">info@aiet.edu.in</a></li>
+				<a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fa fa-facebook-square icon"></i></a>
+				<a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fa fa-instagram icon"></i></a>
+				<a href="https://in.linkedin.com" target="_blank" title="LinkedIn"><i class="fa fa-linkedin-square icon"></i></a>
+			</ul>
+		</div>
+	</div>
+
+	<button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+</body>
+
+<script type="text/javascript">
+	// Get the button:
+	let mybutton = document.getElementById("topBtn");
+
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function () { scrollFunction() };
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			mybutton.style.display = "block";
+		} 
+		else {
+			mybutton.style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0; // For Safari
+		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	}
+</script>
+
+</html>
