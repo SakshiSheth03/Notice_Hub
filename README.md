@@ -1,2 +1,3 @@
 # Notice_Hub
-This repository is for the GTU Vidhyarthi project SEM6
+Notice Hub is a web application by which admin can post the notice of fees, circulars, or activities 
+and students can view all the notices.
